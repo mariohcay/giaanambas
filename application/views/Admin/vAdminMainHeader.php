@@ -27,6 +27,9 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
+      <?php
+      $username = $this->session->userdata('username');
+      if($username === "superadmin") { ?>
       <div class="sidebar-heading">
         JEMAAT
       </div>
@@ -45,16 +48,17 @@
           <i class="fas fa-fw fa-plus"></i>
           <span>Tambah Jemaat</span></a>
       </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider">
+      <?php } ?>
 
       <!-- Heading -->
       <div class="sidebar-heading">
         IBADAH
       </div>
       <?php
-      $username = $this->session->userdata('username');
       $admin = "";
       if ($username === "superadmin" || $username === "admin1") {
         $admin = "Umum 1";

@@ -30,8 +30,8 @@
             </div> -->
             <div class="card-body" id="daftarHadir">
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active font-weight-bold" href="#">Tambah Kehadiran</a>
-                <a class="nav-item nav-link" href="<?= base_url('Admin/tambahKehadiran/') . $ibadah['kode'] ?>">Daftar Kehadiran</a>
+                <a class="nav-item nav-link active font-weight-bold" href="#">Daftar Kehadiran</a>
+                <a class="nav-item nav-link" href="<?= base_url('Admin/tambahKehadiran/') . $ibadah['kode'] ?>">Tambah Kehadiran</a>
               </div>
               <div class="tab-content">
                 <div class="tab-pane fade show active">

@@ -32,7 +32,7 @@ class M_kehadiran extends CI_Model
 
     public function jemaatHadir($kodeIbadah)
     {
-        return $this->db->get_where('tb_kehadiran', ['status' => "HADIR", 'kodeIbadah' => $kodeIbadah])->result_array();
+        return $this->db->get_where('tb_kehadiran', ['kode' => $kodeIbadah])->result_array();
     }
 
     public function cekStatusKehadiran($id, $kodeIbadah)

@@ -33,11 +33,11 @@ class M_ibadah extends CI_Model
 
     public function updateIbadah($kodeIbadah, $data)
     {
-        $this->db->set($data)->where('kodeIbadah', $kodeIbadah)->update('tb_ibadah');
+        $this->db->set($data)->where('kode', $kodeIbadah)->update('tb_ibadah');
     }
 
     public function tutupDaftarOnsite($kodeIbadah)
     {
-        $this->db->set('status', "SELESAI")->where('kodeIbadah', $kodeIbadah)->update('tb_ibadah');
+        $this->db->set('status', "SELESAI")->where('kode', $kodeIbadah)->update('tb_ibadah');
     }
 }

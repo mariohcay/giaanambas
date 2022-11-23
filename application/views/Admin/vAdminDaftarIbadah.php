@@ -16,6 +16,7 @@
 
           <?= $this->session->flashdata('welcome'); ?>
           <?= $this->session->flashdata('message'); ?>
+          <?= $this->session->tempdata('message'); ?>
 
           <div class="mb-4 <?php
                             $admin = array("superadmin", "adminabakris", "adminprbk");
@@ -26,7 +27,7 @@
             <?php
             $activeValue = urldecode($this->uri->segment('3'));
             ?>
-            <label for="Nama Ibadah" class="font-weight-bold">Pilih Ibadah</label>
+            <label for="Nama Ibadah" class="font-weight-bold">Kategori Ibadah</label>
             <?php if (in_array($this->session->userdata('username'), $admin)) { ?>
               <select class="custom-select" name="jenisIbadah" id="jenisIbadah" onchange="document.location.href = '<?= base_url('Admin/daftarIbadah/'); ?>' + this.value">
                 <?php if ($this->session->userdata('username') === "superadmin"){ ?>
@@ -108,7 +109,7 @@
           <?php } else { ?>
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Ibadah Onsite Minggu Ini</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Ibadah Pekan Ini</h6>
               </div>
               <div class="card-body px-5">
                 <?php $this->load->model('m_kehadiran');
@@ -122,9 +123,10 @@
                     </h5>
                   </div>
                   <div class="row">
-                    <!-- <a href="<?= base_url('Admin/scanQRCode/') . $data['kode'] ?>" class="btn btn-primary btn-sm p-2 my-1 mr-1">CEK KEHADIRAN</a> -->
+                    <a href="<?= $data['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2">LINK YOUTUBE</a>
                     <a href="<?= base_url('Admin/jemaatTerdaftar/') . $data['kode'] ?>" class="btn btn-primary btn-sm p-2 my-1 mr-2">CEK KEHADIRAN</a>
-                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-danger btn-sm p-2 my-1 mr-2">TUTUP PENDAFTARAN</a>
+                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2">TUTUP PENDAFTARAN</a>
+                    <a href="<?= base_url('Admin/ubahIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2">EDIT</a>
                   </div>
                 <?php endforeach; ?>
               </div>
@@ -141,7 +143,7 @@
                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th></th>
+                      <!-- <th>No</th> -->
                       <th>Ibadah</th>
                       <th>Tanggal</th>
                       <th>Jemaat Hadir</th>
@@ -150,14 +152,14 @@
                   </thead>
                   <tbody>
                     <?php foreach ($ibadah as $data) :
-                      $hadir = count($this->m_kehadiran->jemaatHadir($data['kodeIbadah']));
+                      $hadir = count($this->m_kehadiran->jemaatHadir($data['kode']));
                     ?>
                       <tr>
-                        <td><img class="img-responsive shadow" style="width: 10rem;" src="<?= base_url('assets/img/thumbnail/') . $data['image'] ?>" alt=""></td>
-                        <td><?= $data['namaIbadah'] ?><br>"<?= $data['temaIbadah'] ?>"</td>
-                        <td><?= tgl_indo($data['tanggalIbadah']) ?></td>
+                        <!-- <td><img class="img-responsive shadow" style="width: 10rem;" src="<?= base_url('assets/img/thumbnail/') . $data['image'] ?>" alt=""></td> -->
+                        <td><?= $data['nama'] ?><br>"<?= $data['tema'] ?>"</td>
+                        <td><?= tgl_indo($data['tanggal']) ?></td>
                         <td><?= $hadir ?></td>
-                        <td><a href="<?= base_url('Admin/detailIbadah/') . $data['kodeIbadah'] ?>" class="btn btn-info btn-sm p-2">DETAIL</a></td>
+                        <td><a href="<?= base_url('Admin/detailIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2">DETAIL</a></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

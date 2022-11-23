@@ -294,9 +294,10 @@ class Admin extends CI_Controller
             $data['title'] = 'Detail Ibadah - GKI Kebonagung Web Services';
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
-            if ($data['ibadah']['tanggalIbadah'] < date('Y-m-d') && $data['ibadah']['status'] === "BUKA") {
+            if ($data['ibadah']['tanggal'] < date('Y-m-d') && $data['ibadah']['status'] === "BUKA") {
                 $this->m_ibadah->tutupDaftarOnsite($kodeIbadah);
             }
+            $data['jemaat'] = $this->m_kehadiran->ambilJemaatHadir($kodeIbadah);
 
             $this->load->view('Templates/vHeader', $data);
             $this->load->view('Admin/vAdminMainHeader');
@@ -340,22 +341,33 @@ class Admin extends CI_Controller
     public function simpanUbahIbadah($kodeIbadah)
     {
         if (_checkUser()) {
-            $tanggalIbadah = $this->input->post('tanggalIbadah');
-            $jamIbadah = $this->input->post('jam') . ":" . $this->input->post('menit') . ":00";
+            $tanggal = $this->input->post('tanggal');
+            $jam = $this->input->post('jam') . ":" . $this->input->post('menit') . ":00";
+            $username = $this->session->userdata('username');
 
-            $ibadah = [
-                'namaIbadah' => $this->input->post('namaIbadah'),
-                'temaIbadah' => $this->input->post('temaIbadah'),
-                'tanggalIbadah' => $tanggalIbadah,
-                'jamIbadah' => $jamIbadah,
-                'kuota' => $this->input->post('kuota'),
-                'link' => $this->input->post('link'),
-                'deskripsi' => $this->input->post('deskripsi')
-            ];
-
+            if ($username === "superadmin" || $username === "adminabakris" || $username === "adminprbk"){
+                $ibadah = [
+                    'nama' => $this->input->post('nama'),
+                    'jenis' => $this->input->post('jenisIbadah'),
+                    'tema' => $this->input->post('tema'),
+                    'tanggal' => $tanggal,
+                    'jam' => $jam,
+                    'link' => $this->input->post('link')
+                ];    
+            } else {
+                $ibadah = [
+                    'nama' => $this->input->post('nama'),
+                    'jenis' => $this->input->post('jenis'),
+                    'tema' => $this->input->post('tema'),
+                    'tanggal' => $tanggal,
+                    'jam' => $jam,
+                    'link' => $this->input->post('link')
+                ];
+            }
+            
             $this->m_ibadah->updateIbadah($kodeIbadah, $ibadah);
             $this->session->set_tempdata('message', '<div class="alert alert-success d-flex justify-content-between" role="alert"></i> <small>Berhasil mengubah data ibadah</small><i class="fa fa-check my-auto"></i></div>', 1);
-            $this->ubahIbadah($kodeIbadah);
+            redirect('Admin/daftarIbadah/'.$ibadah['jenis']);
         }
     }
 
@@ -438,11 +450,10 @@ class Admin extends CI_Controller
     {
         if (_checkUser()) {
             $this->m_ibadah->tutupDaftarOnsite($kodeIbadah);
-            $this->m_kehadiran->setTidakHadir();
-            $namaIbadah = $this->m_ibadah->ambilIbadah($kodeIbadah)['namaIbadah'];
+            $namaIbadah = $this->m_ibadah->ambilIbadah($kodeIbadah)['nama'];
             $jenisIbadah = $this->m_ibadah->ambilIbadah($kodeIbadah)['jenis'];
             $this->session->set_flashdata('message', '<div class="alert alert-success d-flex justify-content-between" role="alert"></i> <small>Pendaftaran <b>' . $namaIbadah . '</b> telah ditutup</small><i class="fa fa-check my-auto"></i></div>');
-            $this->daftarIbadah($jenisIbadah);
+            redirect('Admin/daftarIbadah/'.$jenisIbadah);
         }
     }
 
