@@ -7,9 +7,9 @@ class M_kehadiran extends CI_Model
         $this->db->insert('tb_kehadiran', $data);
     }
 
-    public function totalKehadiran()
+    public function totalKehadiran($jenisIbadah)
     {
-        $query = $this->db->query("SELECT COUNT(id) as jumlah, tb_ibadah.tanggalIbadah as tanggal FROM tb_kehadiran INNER JOIN tb_ibadah ON tb_kehadiran.kodeIbadah = tb_ibadah.kodeIbadah WHERE tb_ibadah.status = 'SELESAI' AND tb_kehadiran.status = 'HADIR' GROUP BY tb_kehadiran.kodeIbadah ORDER BY tb_ibadah.tanggalIbadah ASC");
+        $query = $this->db->query('SELECT COUNT(id) as jumlah, tb_ibadah.tanggal as tanggal FROM tb_kehadiran INNER JOIN tb_ibadah ON tb_kehadiran.kode = tb_ibadah.kode WHERE tb_ibadah.status = "SELESAI" AND tb_ibadah.jenis = "'.$jenisIbadah.'"GROUP BY tb_kehadiran.kode ORDER BY tb_ibadah.tanggal ASC');
         return $query->result();
     }
 

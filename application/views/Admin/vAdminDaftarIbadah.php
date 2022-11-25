@@ -30,68 +30,73 @@
             <label for="Nama Ibadah" class="font-weight-bold">Kategori Ibadah</label>
             <?php if (in_array($this->session->userdata('username'), $admin)) { ?>
               <select class="custom-select" name="jenisIbadah" id="jenisIbadah" onchange="document.location.href = '<?= base_url('Admin/daftarIbadah/'); ?>' + this.value">
-                <?php if ($this->session->userdata('username') === "superadmin"){ ?>
-                <option value="Umum 1" class="d-block" <?php if ($activeValue === "Umum 1") {
+                <?php if ($this->session->userdata('username') === "superadmin") { ?>
+                  <option value="Umum 1" class="d-block" <?php if ($activeValue === "Umum 1") {
+                                                            echo "selected";
+                                                          } ?>>Umum 1</option>
+                  <option value="Umum 2" class="d-block" <?php if ($activeValue === "Umum 2") {
+                                                            echo "selected";
+                                                          } ?>>Umum 2</option>
+                  <option value="Kamis" class="d-block" <?php if ($activeValue === "Kamis") {
                                                           echo "selected";
-                                                        } ?>>Umum 1</option>
-                <option value="Umum 2" class="d-block" <?php if ($activeValue === "Umum 2") {
-                                                          echo "selected";
-                                                        } ?>>Umum 2</option>
-                <option value="Kamis" class="d-block" <?php if ($activeValue === "Kamis") {
-                                                        echo "selected";
-                                                      } ?>>Kamis</option>
+                                                        } ?>>Kamis</option>
                 <?php }
                 if ($this->session->userdata('username') === "superadmin" || $this->session->userdata('username') === "adminabakris") { ?>
-                <option value="Abakris - Bethlehem" class="d-block" <?php if ($activeValue === "Abakris - Bethlehem") {
-                                                                      echo "selected";
-                                                                    } ?>>Abakris - Bethlehem</option>
-                <option value="Abakris - Bethel" class="d-block" <?php if ($activeValue === "Abakris - Bethel") {
-                                                                    echo "selected";
-                                                                  } ?>>Abakris - Bethel</option>
-                <option value="Abakris - Pniel" class="d-block" <?php if ($activeValue === "Abakris - Pniel") {
-                                                                  echo "selected";
-                                                                } ?>>Abakris - Pniel</option>
-                <option value="Abakris - Sion" class="d-block" <?php if ($activeValue === "Abakris - Sion") {
-                                                                  echo "selected";
-                                                                } ?>>Abakris - Sion</option>
-                <option value="Abakris - Tunas Remaja" class="d-block" <?php if ($activeValue === "Abakris - Tunas Remaja") {
-                                                                          echo "selected";
-                                                                        } ?>>Abakris - Tunas Remaja</option>
-                <?php } if ($this->session->userdata('username') === "superadmin" || $this->session->userdata('username') === "adminprbk") { ?>
-                <option value="PRBK - Remaja" class="d-block" <?php if ($activeValue === "PRBK - Remaja") {
-                                                                echo "selected";
-                                                              } ?>>PRBK - Remaja</option>
-                <option value="PRBK - Pemuda" class="d-block" <?php if ($activeValue === "PRBK - Pemuda") {
-                                                                echo "selected";
-                                                              } ?>>PRBK - Pemuda</option>
-                <option value="PRBK - Dewasa Muda" class="d-block" <?php if ($activeValue === "Dewasa Muda") {
-                                                                      echo "selected";
-                                                                    } ?>>PRBK - Dewasa Muda</option>
-                <?php } if ($this->session->userdata('username') === "superadmin"){ ?>
-                <option value="Kaum Pria" class="d-block" <?php if ($activeValue === "Kaum Pria") {
-                                                            echo "selected";
-                                                          } ?>>Kaum Pria</option>
-                <option value="Kaum Wanita" class="d-block" <?php if ($activeValue === "Kaum Wanita") {
-                                                              echo "selected";
-                                                            } ?>>Kaum Wanita</option>
-                <option value="Persekutuan Samaria" class="d-block" <?php if ($activeValue === "Persekutuan Samaria") {
-                                                                      echo "selected";
-                                                                    } ?>>Persekutuan Samaria</option>
-                <option value="Persekutuan Filipi" class="d-block" <?php if ($activeValue === "Persekutuan Filipi") {
-                                                                      echo "selected";
-                                                                    } ?>>Persekutuan Filipi</option>
-                <option value="Persekutuan Filadelfia" class="d-block" <?php if ($activeValue === "Persekutuan Filadelfia") {
-                                                                          echo "selected";
-                                                                        } ?>>Persekutuan Samaria</option>
-                <option value="Persekutuan Kana" class="d-block" <?php if ($activeValue === "Persekutuan Kana") {
-                                                                    echo "selected";
-                                                                  } ?>>Persekutuan Kana</option>
-                <option value="Persekutuan Bethlehem" class="d-block" <?php if ($activeValue === "Persekutuan Bethlehem") {
+                  <option value="Abakris - Bethlehem" class="d-block" <?php if ($activeValue === "Abakris - Bethlehem") {
                                                                         echo "selected";
-                                                                      } ?>>Persekutuan Bethlehem</option>
-                <option value="TPI" class="d-block" <?php if ($activeValue === "TPI") {
-                                                      echo "selected";
-                                                    } ?>>TPI</option>
+                                                                      } ?>>Abakris - Bethlehem</option>
+                  <option value="Abakris - Bethel" class="d-block" <?php if ($activeValue === "Abakris - Bethel") {
+                                                                      echo "selected";
+                                                                    } ?>>Abakris - Bethel</option>
+                  <option value="Abakris - Pniel" class="d-block" <?php if ($activeValue === "Abakris - Pniel") {
+                                                                    echo "selected";
+                                                                  } ?>>Abakris - Pniel</option>
+                  <option value="Abakris - Sion" class="d-block" <?php if ($activeValue === "Abakris - Sion") {
+                                                                    echo "selected";
+                                                                  } ?>>Abakris - Sion</option>
+                  <option value="Abakris - Tunas Remaja" class="d-block" <?php if ($activeValue === "Abakris - Tunas Remaja") {
+                                                                            echo "selected";
+                                                                          } ?>>Abakris - Tunas Remaja</option>
+                <?php }
+                if ($this->session->userdata('username') === "superadmin" || $this->session->userdata('username') === "adminprbk") { ?>
+                  <option value="PRBK - Remaja" class="d-block" <?php if ($activeValue === "PRBK - Remaja") {
+                                                                  echo "selected";
+                                                                } ?>>PRBK - Remaja</option>
+                  <option value="PRBK - Pemuda" class="d-block" <?php if ($activeValue === "PRBK - Pemuda") {
+                                                                  echo "selected";
+                                                                } ?>>PRBK - Pemuda</option>
+                  <option value="PRBK - Dewasa Muda" class="d-block" <?php if ($activeValue === "Dewasa Muda") {
+                                                                        echo "selected";
+                                                                      } ?>>PRBK - Dewasa Muda</option>
+                <?php }
+                if ($this->session->userdata('username') === "superadmin") { ?>
+                  <option value="Kaum Pria" class="d-block" <?php if ($activeValue === "Kaum Pria") {
+                                                              echo "selected";
+                                                            } ?>>Kaum Pria</option>
+                  <option value="Kaum Wanita" class="d-block" <?php if ($activeValue === "Kaum Wanita") {
+                                                                echo "selected";
+                                                              } ?>>Kaum Wanita</option>
+                  <option value="Persekutuan Samaria" class="d-block" <?php if ($activeValue === "Persekutuan Samaria") {
+                                                                        echo "selected";
+                                                                      } ?>>Persekutuan Samaria</option>
+                  <option value="Persekutuan Filipi" class="d-block" <?php if ($activeValue === "Persekutuan Filipi") {
+                                                                        echo "selected";
+                                                                      } ?>>Persekutuan Filipi</option>
+                  <option value="Persekutuan Filadelfia" class="d-block" <?php if ($activeValue === "Persekutuan Filadelfia") {
+                                                                            echo "selected";
+                                                                          } ?>>Persekutuan Filadelfia</option>
+                  <option value="Persekutuan Kana" class="d-block" <?php if ($activeValue === "Persekutuan Kana") {
+                                                                      echo "selected";
+                                                                    } ?>>Persekutuan Kana</option>
+                  <option value="Persekutuan Bethlehem" class="d-block" <?php if ($activeValue === "Persekutuan Bethlehem") {
+                                                                          echo "selected";
+                                                                        } ?>>Persekutuan Bethlehem</option>
+                  <option value="TPI" class="d-block" <?php if ($activeValue === "TPI") {
+                                                        echo "selected";
+                                                      } ?>>TPI</option>
+                  <option value="Khusus" class="d-block" <?php if ($activeValue === "Khusus") {
+                                                            echo "selected";
+                                                          } ?>>Khusus</option>
                 <?php } ?>
               </select>
             <?php } ?>
@@ -102,7 +107,7 @@
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Ibadah Pekan Ini</h6>
               </div>
-              <div class="card-body mr-4 text-center">
+              <div class="card-body text-center">
                 <h6>Belum ada ibadah terbaru dalam pekan ini</h6>
               </div>
             </div>
@@ -123,9 +128,13 @@
                     </h5>
                   </div>
                   <div class="row">
-                    <a href="<?= $data['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2">LINK YOUTUBE</a>
+                    <?php if ($activeValue === "Umum 1") {
+                      if ($data['link'] !== "-") { ?>
+                        <a href="<?= $data['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2">LINK YOUTUBE</a>
+                    <?php }
+                    } ?>
                     <a href="<?= base_url('Admin/jemaatTerdaftar/') . $data['kode'] ?>" class="btn btn-primary btn-sm p-2 my-1 mr-2">CEK KEHADIRAN</a>
-                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2">TUTUP PENDAFTARAN</a>
+                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2">TUTUP KEHADIRAN</a>
                     <a href="<?= base_url('Admin/ubahIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2">EDIT</a>
                   </div>
                 <?php endforeach; ?>

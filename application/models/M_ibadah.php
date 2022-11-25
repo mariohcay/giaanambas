@@ -14,7 +14,7 @@ class M_ibadah extends CI_Model
 
     public function daftarIbadahSelesai($jenisIbadah)
     {
-        return $this->db->query('SELECT * FROM tb_ibadah WHERE status = "SELESAI" ORDER BY tanggal DESC')->result_array();
+        return $this->db->query('SELECT * FROM tb_ibadah WHERE jenis = "'.urldecode($jenisIbadah).'" AND status = "SELESAI" ORDER BY tanggal DESC')->result_array();
     }
 
     public function ambilIbadah($kodeIbadah)

@@ -2,6 +2,11 @@
 
 class M_jemaat extends CI_Model
 {
+    public function convertTanggal()
+    {
+        return $this->db->get('tb_tanggal')->result_array();
+    }
+
     public function daftarJemaat()
     {
         return $this->db->get('tb_jemaat')->result_array();

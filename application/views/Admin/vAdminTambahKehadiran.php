@@ -25,19 +25,18 @@
           <!-- DataTales Example -->
           <?= $this->session->flashdata('message'); ?>
           <div class="card shadow mb-4">
+            <!-- <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Jemaat Terdaftar</h6>
+            </div> -->
             <div class="card-body" id="daftarHadir">
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link" href="<?= base_url('Admin/jemaatTerdaftar/') . $ibadah['kode'] ?>">Daftar Kehadiran</a>
                 <a class="nav-item nav-link active font-weight-bold" href="#">Tambah Kehadiran</a>
+                <a class="nav-item nav-link" href="<?= base_url('Admin/jemaatTerdaftar/') . $ibadah['kode'] ?>">Daftar Kehadiran</a>
+                <a class="nav-item nav-link" href="<?= base_url('Admin/tambahSimpatisan/') . $ibadah['kode'] ?>">Kehadiran Simpatisan</a>
               </div>
               <div class="tab-content">
                 <div class="tab-pane fade show active">
                   <div class="table-responsive mt-4">
-                    <?php
-                    $this->load->model('m_kehadiran');
-                    $kodeIbadah = $ibadah['kode'];
-                    $kehadiran = $this->m_kehadiran->ambilJemaatHadir($kodeIbadah);
-                    ?>
                     <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
@@ -58,7 +57,8 @@
                             <td><?= $data['nama'] ?></td>
                             <td><?= $data['alamat'] ?></td>
                             <td>
-                              <a class="btn btn-sm btn-danger mr-1" href="<?= base_url('Admin/hapusJemaatHadir/') . $data['id'] . "/" . $ibadah['kode'] ?>" onclick="return confirm('Yakin ingin menghapus <?= $data['nama'] ?> dari daftar kehadiran jemaat?')">HAPUS</a>
+                              <!-- <a class="btn btn-sm btn-danger mr-1" href="<?= base_url('Admin/hapusJemaatTerdaftarOnsite/') . $data['id'] . "/" . $ibadah['kodeIbadah'] ?>" onclick="return confirm('Yakin ingin menghapus <?= $data['nama'] ?> dari jemaat terdaftar?')">HAPUS</a> -->
+                              <a class="btn btn-sm btn-success mr-1" href="<?= base_url('Admin/submitTambahKehadiran/') . $ibadah['kode'] . "/" . $data['id'] ?>" onclick="return confirm('Masukkan <?= $data['nama'] ?> dalam daftar kehadiran jemaat?')">HADIR</a>
                             </td>
                           </tr>
                         <?php

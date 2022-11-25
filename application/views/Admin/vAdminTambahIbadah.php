@@ -44,10 +44,11 @@
                   <option value="Kaum Wanita" class="d-block">Kaum Wanita</option>
                   <option value="Persekutuan Samaria" class="d-block">Persekutuan Samaria</option>
                   <option value="Persekutuan Filipi" class="d-block">Persekutuan Filipi</option>
-                  <option value="Persekutuan Filadelfia" class="d-block">Persekutuan Samaria</option>
+                  <option value="Persekutuan Filadelfia" class="d-block">Persekutuan Filadelfia</option>
                   <option value="Persekutuan Kana" class="d-block">Persekutuan Kana</option>
                   <option value="Persekutuan Bethlehem" class="d-block">Persekutuan Bethlehem</option>
                   <option value="TPI" class="d-block">TPI</option>
+                  <option value="Khusus" class="d-block">Khusus</option>
                 <?php } ?>
               </select>
             <?php } ?>
@@ -119,8 +120,10 @@
     var activeValue = $("#jenisIbadah").val();
     if (activeValue != "Umum 1") {
       $("#linkYoutube").hide();
+      $("#link").val("-");
     } else {
       $("#linkYoutube").show();
+      $("#link").val("");
     }
   }
 </script>

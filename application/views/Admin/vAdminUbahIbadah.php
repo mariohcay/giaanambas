@@ -75,7 +75,7 @@
                                                                     } ?>>Persekutuan Filipi</option>
                 <option value="Persekutuan Filadelfia" class="d-block" <?php if ($ibadah['jenis'] === "Persekutuan Filadelfia") {
                                                                           echo "selected";
-                                                                        } ?>>Persekutuan Samaria</option>
+                                                                        } ?>>Persekutuan Filadelfia</option>
                 <option value="Persekutuan Kana" class="d-block" <?php if ($ibadah['jenis'] === "Persekutuan Kana") {
                                                                     echo "selected";
                                                                   } ?>>Persekutuan Kana</option>
@@ -140,7 +140,7 @@
         </ul>
         <hr>
         <div class="d-inline float-right align-items-center">
-          <a href="<?= base_url('Dashboard') ?>" class="mr-4 text-secondary" id="batal"><small>BATAL</small></a>
+          <a href="<?= base_url('Admin') ?>" class="mr-4 text-secondary" id="batal"><small>BATAL</small></a>
           <button type="submit" class="btn btn-success btn-sm" id="simpan">SIMPAN</button>
         </div>
       </form>
