@@ -20,7 +20,7 @@
                   <h5><?= tgl_indo($ibadah['tanggal'], true) ?></h5>
               </div>
             </div>
-            <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $ibadah['kode'] ?>" class="btn btn-success shadow-sm"><i class="fas fa-times fa-sm text-white mr-1"></i> TUTUP KEHADIRAN</a>
+            <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $ibadah['kode'] ?>" class="btn btn-success shadow-sm" onclick="return confirm('Anda yakin ingin MENUTUP kehadiran ibadah <?= $ibadah['nama'] ?>?')"><i class="fas fa-times fa-sm text-white mr-1"></i> TUTUP KEHADIRAN</a>
           </div>
 
           <!-- DataTales Example -->

@@ -134,7 +134,7 @@
                     <?php }
                     } ?>
                     <a href="<?= base_url('Admin/tambahKehadiran/') . $data['kode'] ?>" class="btn btn-primary btn-sm p-2 my-1 mr-2"><i class="fa fa-list fa-sm text-white mr-2"></i>CEK KEHADIRAN</a>
-                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2"><i class="fa fa-times fa-sm text-white mr-2"></i>TUTUP KEHADIRAN</a>
+                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2" onclick="return confirm('Anda yakin ingin MENUTUP kehadiran ibadah <?= $data['nama'] ?>?')"><i class="fa fa-times fa-sm text-white mr-2"></i>TUTUP KEHADIRAN</a>
                     <a href="<?= base_url('Admin/ubahIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2"><i class="fa fa-pencil-square-o fa-sm text-white mr-2"></i>EDIT</a>
                   </div>
                 <?php endforeach; ?>
