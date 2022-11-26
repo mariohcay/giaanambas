@@ -17,6 +17,40 @@
     </div>
   </div>
 
+  <?php if ($this->session->userdata('username') === "superadmin") { ?>
+  <div class="card shadow mb-4" id="cardProfile">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Jumlah Kehadiran Ibadah</h6>
+    </div>
+    <div class="card-body">
+      <!-- <div class="row my-3">
+        <div class="col-lg-10">
+          <div class="chart-area" style="height: 250px">
+            <canvas id="chartKehadiran"></canvas>
+          </div>
+        </div>
+      </div> -->
+      <div class="row">
+        <?php
+        // var_dump($kehadiran); die;
+        foreach ($kehadiran as $jmlHadir) { ?>
+          <div class="col-lg-2 col-md-3 mb-4">
+            <div class="card shadow">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"><?= $jmlHadir['jenis'] ?></div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlHadir['jml'] ?></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+  <?php } ?>
 
   <!-- Page Heading -->
   <div class="card shadow mb-4" id="cardProfile">
@@ -70,11 +104,11 @@
             <label for="Status Baptis" class="font-weight-bold">Status Baptis</label>
             <select class="custom-select" name="statusBaptis">
               <option value="Sudah" class="d-block" <?php if ($jemaat['statusBaptis'] === "Sudah") {
-                                                          echo "selected";
-                                                        }; ?>>Sudah</option>
+                                                      echo "selected";
+                                                    }; ?>>Sudah</option>
               <option value="Belum" class="d-block" <?php if ($jemaat['statusBaptis'] === "Belum") {
-                                                          echo "selected";
-                                                        }; ?>>Belum</option>
+                                                      echo "selected";
+                                                    }; ?>>Belum</option>
             </select>
           </li>
           <li class="list-group-item">
@@ -93,7 +127,7 @@
         <hr>
         <div class="d-inline float-right align-items-center">
           <a href="<?= base_url('Admin/daftarJemaat') ?>" class="mr-4 text-secondary" id="batal"><small>BATAL</small></a>
-          <button type="submit" class="btn btn-success btn-sm" id="simpan">SIMPAN
+          <button type="submit" class="btn btn-success btn-sm" id="simpan"><i class="fa fa-floppy-o fa-sm text-white mr-2"></i>SIMPAN
           </button>
         </div>
       </form>

@@ -23,7 +23,9 @@
             <div class="col-auto">
               <i class="fas fa-users fa-2x text-gray-300"></i>
             </div>
-            <a href="<?= base_url('Admin/daftarJemaat') ?>" class="stretched-link"></a>
+            <?php if ($this->session->userdata('username') === "superadmin") { ?>
+              <a href="<?= base_url('Admin/daftarJemaat') ?>" class="stretched-link"></a>
+            <?php } ?>
           </div>
         </div>
       </div>

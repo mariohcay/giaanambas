@@ -42,10 +42,10 @@
                 <div class="col-lg">
                   <?php if ($ibadah['jenis'] === "Umum 1") {
                     if ($ibadah['link'] !== "-") { ?>
-                      <a href="<?= $ibadah['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2">LINK YOUTUBE</a>
+                      <a href="<?= $ibadah['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2"><i class="fa fa-youtube-play fa-sm text-white mr-2"></i>LINK YOUTUBE</a>
                   <?php }
                   } ?>
-                  <a href="<?= base_url('Admin/ubahIbadah/') . $ibadah['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2">EDIT</a>
+                  <a href="<?= base_url('Admin/ubahIbadah/') . $ibadah['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2"><i class="fa fa-pencil-square-o fa-sm text-white mr-2"></i>EDIT</a>
                 </div>
               </div>
               <!-- <div class="row">

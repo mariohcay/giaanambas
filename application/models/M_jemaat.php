@@ -19,7 +19,7 @@ class M_jemaat extends CI_Model
 
     public function ambilJemaat($user)
     {
-        return $this->db->query("SELECT * FROM tb_jemaat WHERE username = '".$user."' OR telepon = '".$user."'")->row_array();
+        return $this->db->query("SELECT * FROM tb_jemaat WHERE username = '" . $user . "' OR telepon = '" . $user . "'")->row_array();
     }
 
     public function tambahJemaat($data)
@@ -37,8 +37,8 @@ class M_jemaat extends CI_Model
         return $this->db->get_where('tb_jemaat', ['id' => $id])->row_array();
     }
 
-    public function ambilDataTerakhir()
+    public function ambilJmlKehadiran($id)
     {
-        return $this->db->query('SELECT * FROM jemaat ORDER BY noinduk DESC')->row_array();
+        return $this->db->query('SELECT tb_ibadah.jenis, COUNT(tb_kehadiran.id) as jml FROM tb_kehadiran INNER JOIN tb_ibadah On tb_kehadiran.kode = tb_ibadah.kode WHERE tb_kehadiran.id = "' . $id . '" GROUP BY tb_ibadah.jenis;')->result_array();
     }
 }

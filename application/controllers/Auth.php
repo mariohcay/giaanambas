@@ -11,7 +11,7 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Selamat Datang - GKI Kebonagung';
+		$data['title'] = 'Selamat Datang - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
                
         $this->load->view('Templates/vHeader', $data);
         $this->load->view('Auth/vLogin');
@@ -39,7 +39,7 @@ class Auth extends CI_Controller {
                 ];
                 $this->session->set_userdata($data);
                 $this->session->set_flashdata('welcome', '<div class="alert alert-success alert-dismissible fade show text-center" role="alert"><h4>Hai, <strong>'.$data['nama'].'</strong></h4><br>
-                Selamat datang di GKI Kebonagung Web Services<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                Selamat datang di SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 redirect('Admin');
             }else{
                 $this->session->set_flashdata('message', '<div class="alert alert-danger d-flex justify-content-between" role="alert"></i> <small>Username atau password salah</small><i class="fa fa-exclamation-circle my-auto"></i></div>');
@@ -54,7 +54,7 @@ class Auth extends CI_Controller {
 
     public function register()
     {
-        $data['title'] = 'Selamat Datang - GKI Kebonagung';
+        $data['title'] = 'Selamat Datang - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
         $this->load->view('Templates/vHeader', $data);
         $this->load->view('Auth/vRegister');
         $this->load->view('Templates/vFooter');

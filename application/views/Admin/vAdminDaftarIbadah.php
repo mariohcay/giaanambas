@@ -130,12 +130,12 @@
                   <div class="row">
                     <?php if ($activeValue === "Umum 1") {
                       if ($data['link'] !== "-") { ?>
-                        <a href="<?= $data['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2">LINK YOUTUBE</a>
+                        <a href="<?= $data['link'] ?>" target="_blank" class="btn btn-danger btn-sm p-2 my-1 mr-2"><i class="fa fa-youtube-play fa-sm text-white mr-2"></i>LINK YOUTUBE</a>
                     <?php }
                     } ?>
-                    <a href="<?= base_url('Admin/jemaatTerdaftar/') . $data['kode'] ?>" class="btn btn-primary btn-sm p-2 my-1 mr-2">CEK KEHADIRAN</a>
-                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2">TUTUP KEHADIRAN</a>
-                    <a href="<?= base_url('Admin/ubahIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2">EDIT</a>
+                    <a href="<?= base_url('Admin/tambahKehadiran/') . $data['kode'] ?>" class="btn btn-primary btn-sm p-2 my-1 mr-2"><i class="fa fa-list fa-sm text-white mr-2"></i>CEK KEHADIRAN</a>
+                    <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $data['kode'] ?>" class="btn btn-success btn-sm p-2 my-1 mr-2"><i class="fa fa-times fa-sm text-white mr-2"></i>TUTUP KEHADIRAN</a>
+                    <a href="<?= base_url('Admin/ubahIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2 my-1 mr-2"><i class="fa fa-pencil-square-o fa-sm text-white mr-2"></i>EDIT</a>
                   </div>
                 <?php endforeach; ?>
               </div>
@@ -168,7 +168,7 @@
                         <td><?= $data['nama'] ?><br>"<?= $data['tema'] ?>"</td>
                         <td><?= tgl_indo($data['tanggal']) ?></td>
                         <td><?= $hadir ?></td>
-                        <td><a href="<?= base_url('Admin/detailIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2">DETAIL</a></td>
+                        <td><a href="<?= base_url('Admin/detailIbadah/') . $data['kode'] ?>" class="btn btn-info btn-sm p-2"><i class="fa fa-info-circle fa-sm text-white mr-2"></i>DETAIL</a></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

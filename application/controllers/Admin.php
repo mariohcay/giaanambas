@@ -465,7 +465,7 @@ class Admin extends CI_Controller
     public function daftarJemaat()
     {
         if (_checkUser()) {
-            $data['title'] = 'Daftar Jemaat - GKI Kebonagung Web Services';
+            $data['title'] = 'Daftar Jemaat - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Daftar Jemaat';
             $data['jemaat'] = $this->m_jemaat->daftarJemaat();
 
@@ -480,7 +480,7 @@ class Admin extends CI_Controller
     public function tambahJemaat()
     {
         if (_checkUser()) {
-            $data['title'] = 'Tambah Jemaat - GKI Kebonagung Web Services';
+            $data['title'] = 'Tambah Jemaat - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Tambah Jemaat';
             $data['id'] = "JM" . strval(count($this->m_jemaat->daftarJemaat()) + 1);
 
@@ -519,9 +519,13 @@ class Admin extends CI_Controller
     public function detailJemaat($id)
     {
         if (_checkUser()) {
-            $data['title'] = 'Daftar Jemaat - GKI Kebonagung Web Services';
+            $data['title'] = 'Daftar Jemaat - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Daftar Jemaat';
             $data['jemaat'] = $this->m_jemaat->ambilJemaatbyId($id);
+            $data['kehadiran'] = $this->m_jemaat->ambilJmlKehadiran($id);
+            // $chartKehadiran = [];
+            // $chartKehadiran['label'] = array("Umum 1", "Umum 2");
+            // $data['kehadiran'] = json_encode($jmlKehadiran);
 
             $this->load->view('Templates/vHeader', $data);
             $this->load->view('Admin/vAdminMainHeader');
@@ -562,7 +566,7 @@ class Admin extends CI_Controller
     public function daftarIbadah($jenisIbadah)
     {
         if (_checkUser()) {
-            $data['title'] = 'Daftar Ibadah - GKI Kebonagung Web Services';
+            $data['title'] = 'Daftar Ibadah - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Daftar Ibadah';
             $data['ibadahMingguIni'] = $this->m_ibadah->daftarIbadahMingguIni($jenisIbadah);
             $data['ibadah'] = $this->m_ibadah->daftarIbadahSelesai($jenisIbadah);
@@ -578,7 +582,7 @@ class Admin extends CI_Controller
     public function tambahIbadah()
     {
         if (_checkUser()) {
-            $data['title'] = 'Tambah Ibadah - GKI Kebonagung Web Services';
+            $data['title'] = 'Tambah Ibadah - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Tambah Ibadah';
 
             $this->load->view('Templates/vHeader', $data);
@@ -679,7 +683,7 @@ class Admin extends CI_Controller
     public function detailIbadah($kodeIbadah)
     {
         if (_checkUser()) {
-            $data['title'] = 'Detail Ibadah - GKI Kebonagung Web Services';
+            $data['title'] = 'Detail Ibadah - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
             if ($data['ibadah']['tanggal'] < date('Y-m-d') && $data['ibadah']['status'] === "BUKA") {
@@ -698,7 +702,7 @@ class Admin extends CI_Controller
     public function jemaatTerdaftar($kodeIbadah)
     {
         if (_checkUser()) {
-            $data['title'] = 'Scan QR Code Ibadah - GKI Kebonagung Web Services';
+            $data['title'] = 'Scan QR Code Ibadah - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
             $data['jemaat'] = $this->m_kehadiran->ambilJemaatHadir($kodeIbadah);
@@ -714,7 +718,7 @@ class Admin extends CI_Controller
     public function ubahIbadah($kodeIbadah)
     {
         if (_checkUser()) {
-            $data['title'] = 'Ubah Ibadah - GKI Kebonagung Web Services';
+            $data['title'] = 'Ubah Ibadah - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
 
@@ -850,7 +854,7 @@ class Admin extends CI_Controller
         if (_checkUser()) {
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
-            $data['title'] = 'Jemaat Terdaftar di ' . $data['ibadah']['nama'] . ' - GKI Kebonagung Web Services';
+            $data['title'] = 'Jemaat Terdaftar di ' . $data['ibadah']['nama'] . ' - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $jemaatHadir = $this->m_kehadiran->ambilJemaatHadir($kodeIbadah);
             if (empty($jemaatHadir)) {
                 $data['jemaat'] = $this->m_jemaat->daftarJemaat();
@@ -898,7 +902,7 @@ class Admin extends CI_Controller
         if (_checkUser()) {
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
-            $data['title'] = 'Daftar Kehadiran Jemaat di ' . $data['ibadah']['namaIbadah'] . ' - GKI Kebonagung Web Services';
+            $data['title'] = 'Daftar Kehadiran Jemaat di ' . $data['ibadah']['namaIbadah'] . ' - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
             $data['jemaat'] = $this->m_kehadiran->semuaKehadiran($kodeIbadah);
 
             $this->load->view('Templates/vHeader', $data);
@@ -914,7 +918,7 @@ class Admin extends CI_Controller
         if (_checkUser()) {
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
-            $data['title'] = 'Daftar Kehadiran Jemaat di ' . $data['ibadah']['namaIbadah'] . ' - GKI Kebonagung Web Services';
+            $data['title'] = 'Daftar Kehadiran Jemaat di ' . $data['ibadah']['namaIbadah'] . ' - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
 
             $this->load->view('Templates/vHeader', $data);
             $this->load->view('Admin/vAdminMainHeader');
@@ -929,7 +933,7 @@ class Admin extends CI_Controller
         if (_checkUser()) {
             $data['category'] = 'Daftar Ibadah';
             $data['ibadah'] = $this->m_ibadah->ambilIbadah($kodeIbadah);
-            $data['title'] = 'Daftar Kehadiran Jemaat di ' . $data['ibadah']['nama'] . ' - GKI Kebonagung Web Services';
+            $data['title'] = 'Daftar Kehadiran Jemaat di ' . $data['ibadah']['nama'] . ' - SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG';
 
             $this->load->view('Templates/vHeader', $data);
             $this->load->view('Admin/vAdminMainHeader');

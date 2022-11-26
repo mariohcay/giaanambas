@@ -20,6 +20,7 @@
                   <h5><?= tgl_indo($ibadah['tanggal'], true) ?></h5>
               </div>
             </div>
+            <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $ibadah['kode'] ?>" class="btn btn-success shadow-sm"><i class="fas fa-times fa-sm text-white mr-1"></i> TUTUP KEHADIRAN</a>
           </div>
 
           <!-- DataTales Example -->
@@ -59,7 +60,7 @@
                             <td><?= $data['nama'] ?></td>
                             <td><?= $data['alamat'] ?></td>
                             <td>
-                              <a class="btn btn-sm btn-danger mr-1" href="<?= base_url('Admin/hapusJemaatHadir/') . $data['id'] . "/" . $ibadah['kode'] ?>" onclick="return confirm('Yakin ingin menghapus <?= $data['nama'] ?> dari daftar kehadiran jemaat?')">HAPUS</a>
+                              <a class="btn btn-sm btn-danger mr-1" href="<?= base_url('Admin/hapusJemaatHadir/') . $data['id'] . "/" . $ibadah['kode'] ?>" onclick="return confirm('Yakin ingin menghapus <?= $data['nama'] ?> dari daftar kehadiran jemaat?')"><i class="fa fa-times fa-sm text-white mr-2"></i>HAPUS</a>
                             </td>
                           </tr>
                         <?php

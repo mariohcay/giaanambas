@@ -20,6 +20,7 @@
                   <h5><?= tgl_indo($ibadah['tanggal'], true) ?></h5>
               </div>
             </div>
+            <a href="<?= base_url('Admin/tutupDaftarOnsite/') . $ibadah['kode'] ?>" class="btn btn-success shadow-sm"><i class="fas fa-times fa-sm text-white mr-1"></i> TUTUP KEHADIRAN</a>
           </div>
 
           <!-- DataTales Example -->
@@ -51,7 +52,7 @@
                       </div> -->
                       <div class="d-flex justify-content-end">
                         <a href="<?= base_url('Admin/jemaatTerdaftar/').$ibadah['kode'] ?>" class="mr-4 text-secondary" id="batal"><small>BATAL</small></a>
-                        <button type="submit" class="btn btn-success btn-sm" id="simpan">TAMBAH KEHADIRAN
+                        <button type="submit" class="btn btn-success btn-sm" id="simpan"><i class="fa fa-plus fa-sm text-white mr-2"></i>TAMBAH KEHADIRAN
                         </button>
                       </div>
                   </form>

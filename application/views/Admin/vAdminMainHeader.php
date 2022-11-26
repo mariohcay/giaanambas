@@ -4,12 +4,12 @@
     <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Fronts') ?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Fronts') ?>">
         <div class="sidebar-brand-icon">
-          <img src="<?= base_url('/assets/img/logo.png') ?>" width="45px">
+          <img src="<?= base_url('/assets/img/logo.jpg') ?>" width="50px">
         </div>
-      </a> -->
-      <small class="text-center text-light my-4">SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG</small>
+      </a>
+      <small class="text-center text-light mb-4">SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG</small>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">

@@ -78,7 +78,7 @@
         <hr>
         <div class="d-inline float-right align-items-center">
           <a href="<?= base_url('Admin') ?>" class="mr-4 text-secondary" id="batal"><small>BATAL</small></a>
-          <button type="submit" class="btn btn-success btn-sm" id="simpan">SIMPAN
+          <button type="submit" class="btn btn-success btn-sm" id="simpan"><i class="fa fa-plus fa-sm text-white mr-2"></i>TAMBAH
           </button>
         </div>
       </form>

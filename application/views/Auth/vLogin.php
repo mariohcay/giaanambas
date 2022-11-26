@@ -9,6 +9,7 @@
                     <div class="card-body p-0">
                         <div class="my-auto">
                             <div class="p-5">
+                                <img src="<?= base_url() ?>/assets/img/logo.png" class="rounded mx-auto d-block w-50">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-0 font-weight-bold mb-4">Selamat Datang di<br>SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG</h1>
                                     <p class="mb-4">Silahkan Login terlebih dahulu</p>

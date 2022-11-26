@@ -34,7 +34,7 @@
                         <td><?= $data['id']?></td>
                         <td><?= $data['nama']?></td>
                         <td><?= $data['alamat']?></td>
-                        <td><a href="<?= base_url('Admin/detailJemaat/').$data['id']?>" class="btn btn-info btn-sm p-2">DETAIL</a></td>
+                        <td><a href="<?= base_url('Admin/detailJemaat/').$data['id']?>" class="btn btn-info btn-sm p-2"><i class="fa fa-info fa-sm text-white mr-2"></i>DETAIL</a></td>
                       </tr>
                       <?php endforeach;?>
                     </tbody>
