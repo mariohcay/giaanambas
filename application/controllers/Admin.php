@@ -72,7 +72,7 @@ class Admin extends CI_Controller
                 }
                 $data['avgKehadiranUmum2'] = $totalUmum2 / count($kehadiranTotalUmum2);
                 $data['kehadiranUmum2'] = json_encode($chartUmum2);
-            }else {
+            } else {
                 $data['cekKehadiranUmum2'] = "empty";
             }
 
@@ -600,7 +600,35 @@ class Admin extends CI_Controller
             $tanggalIbadah = $this->input->post('tanggalIbadah');
             $jamIbadah = $this->input->post('jam') . ":" . $this->input->post('menit') . ":00";
             $pecahkan = explode('-', $tanggalIbadah);
+            $admin = array("superadmin", "adminabakris", "adminprbk");
+            $username = $this->session->userdata('username');
             $kodeIbadah = "";
+            if (empty($jenisIbadah)) {
+                if ($username === "admin1") {
+                    $jenisIbadah = "Umum 1";
+                } else if ($username === "admin2") {
+                    $jenisIbadah = "Umum 2";
+                } else if ($username === "adminkamis") {
+                    $jenisIbadah = "Kamis";
+                } else if ($username === "adminpria") {
+                    $jenisIbadah = "Kaum Pria";
+                } else if ($username === "adminwanita") {
+                    $jenisIbadah = "Kaum Wanita";
+                } else if ($username === "adminsamaria") {
+                    $jenisIbadah = "Persekutuan Samaria";
+                } else if ($username === "adminfilipi") {
+                    $jenisIbadah = "Persekutuan Filipi";
+                } else if ($username === "adminfiladelfia") {
+                    $jenisIbadah = "Persekutuan Filadelfia";
+                } else if ($username === "adminkana") {
+                    $jenisIbadah = "Persekutuan Kana";
+                } else if ($username === "adminbethelehem") {
+                    $jenisIbadah = "Persekutuan Bethelehem";
+                } else if ($username === "admintpi") {
+                    $jenisIbadah = "TPI";
+                }
+            }
+
             if ($jenisIbadah === "Umum 1") {
                 $kodeIbadah = "UM1-" . $pecahkan[2] . $pecahkan[1] . $pecahkan[0];
             } else if ($jenisIbadah === "Umum 2") {
@@ -645,7 +673,7 @@ class Admin extends CI_Controller
 
             $ibadah = [
                 'kode' => $kodeIbadah,
-                'jenis' => $this->input->post('jenisIbadah'),
+                'jenis' => $jenisIbadah,
                 'nama' => $this->input->post('namaIbadah'),
                 'tema' => $this->input->post('temaIbadah'),
                 'tanggal' => $tanggalIbadah,
@@ -655,7 +683,7 @@ class Admin extends CI_Controller
 
             $this->m_ibadah->tambahIbadah($ibadah);
             $this->session->set_flashdata('message', '<div class="alert alert-success d-flex justify-content-between" role="alert"></i> <small>Berhasil menambahkan Ibadah baru</small><i class="fa fa-check my-auto"></i></div>');
-            redirect('Admin/daftarIbadah/' . $this->input->post('jenisIbadah'));
+            redirect('Admin/daftarIbadah/' . $jenisIbadah);
 
             // $config = [
             //     'upload_path' => './assets/img/thumbnail/',
@@ -969,7 +997,7 @@ class Admin extends CI_Controller
             $spreadsheet = $reader->load('template.xlsx');
 
             $spreadsheet->getProperties()->setCreator('mariohcay')
-                ->setTitle('Daftar Kehadiran Jemaat'.tgl_indo($ibadah['tanggal']));
+                ->setTitle('Daftar Kehadiran Jemaat' . tgl_indo($ibadah['tanggal']));
 
             $styleArray = [
                 'borders' => [

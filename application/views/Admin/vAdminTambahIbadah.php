@@ -19,7 +19,7 @@
                                         echo "d-none";
                                       }
                                       ?>">
-            <label for="Nama Ibadah" class="font-weight-bold">Pilih Ibadah</label>
+            <label for="Pilih Ibadah" class="font-weight-bold">Pilih Ibadah</label>
             <?php if (in_array($this->session->userdata('username'), $admin)) { ?>
               <select class="custom-select" name="jenisIbadah" id="jenisIbadah">
                 <?php if ($this->session->userdata('username') === "superadmin") { ?>
@@ -111,19 +111,31 @@
 
 <script>
   $(document).ready(function() {
-    $("#jenisIbadah").change(function() {
-      getelementfromdropdown()
-    });
+    getelementfromdropdown();
+    
+    var username = "<?= $this->session->userdata('username') ?>";
+    if (username == "superadmin") {
+      $("#jenisIbadah").change(function() {
+        getelementfromdropdown()
+      });
+    }
   });
-  
+
   function getelementfromdropdown() {
     var activeValue = $("#jenisIbadah").val();
-    if (activeValue != "Umum 1") {
+    var username = "<?= $this->session->userdata('username') ?>";
+
+    if (username == "superadmin") {
+      if (activeValue != "Umum 1") {
+        $("#linkYoutube").hide();
+        $("#link").val("-");
+      } else {
+        $("#linkYoutube").show();
+        $("#link").val("");
+      }
+    } else {
       $("#linkYoutube").hide();
       $("#link").val("-");
-    } else {
-      $("#linkYoutube").show();
-      $("#link").val("");
     }
   }
 </script>
