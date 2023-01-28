@@ -9,12 +9,12 @@ class M_ibadah extends CI_Model
 
     public function daftarIbadahMingguIni($jenisIbadah)
     {
-        return $this->db->query('SELECT * FROM tb_ibadah WHERE jenis = "'.urldecode($jenisIbadah).'" AND tanggal >= CURDATE() AND status = "BUKA" ORDER BY tanggal ASC')->result_array();
+        return $this->db->query('SELECT * FROM tb_ibadah WHERE jenis = "' . urldecode($jenisIbadah) . '" AND tanggal >= CURDATE() AND status = "BUKA" ORDER BY tanggal ASC')->result_array();
     }
 
     public function daftarIbadahSelesai($jenisIbadah)
     {
-        return $this->db->query('SELECT * FROM tb_ibadah WHERE jenis = "'.urldecode($jenisIbadah).'" AND status = "SELESAI" ORDER BY tanggal DESC')->result_array();
+        return $this->db->query('SELECT * FROM tb_ibadah WHERE jenis = "' . urldecode($jenisIbadah) . '" AND status = "SELESAI" ORDER BY tanggal DESC')->result_array();
     }
 
     public function ambilIbadah($kodeIbadah)
@@ -27,7 +27,8 @@ class M_ibadah extends CI_Model
         $this->db->set('terisi', 'terisi+1', FALSE)->where('kodeIbadah', $kodeIbadah)->update('tb_ibadah');
     }
 
-    public function tambahIbadah($data){
+    public function tambahIbadah($data)
+    {
         $this->db->insert('tb_ibadah', $data);
     }
 
@@ -39,5 +40,10 @@ class M_ibadah extends CI_Model
     public function tutupDaftarOnsite($kodeIbadah)
     {
         $this->db->set('status', "SELESAI")->where('kode', $kodeIbadah)->update('tb_ibadah');
+    }
+
+    public function ibadahBuka()
+    {
+        return $this->db->query('SELECT * FROM tb_ibadah WHERE tanggal < CURDATE() AND status = "BUKA" ORDER BY tanggal ASC')->result_array();
     }
 }

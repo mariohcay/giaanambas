@@ -33,6 +33,12 @@ class Admin extends CI_Controller
             //     echo convert_tgl($tgl['tanggal'])."</br>";
             // }
             // die;
+            $ibadahBuka = $this->m_ibadah->ibadahBuka();
+            if(!empty($ibadahBuka)){
+                foreach($ibadahBuka as $data){
+                    $this->m_ibadah->tutupDaftarOnsite($data['kode']);
+                }
+            }
 
             $kehadiranTotalUmum1 = $this->m_kehadiran->totalKehadiran("Umum 1");
             $totalUmum1 = 0;
