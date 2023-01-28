@@ -38,8 +38,9 @@ class Admin extends CI_Controller
                 foreach($ibadahBuka as $data){
                     $this->m_ibadah->tutupDaftarOnsite($data['kode']);
                 }
+                redirect('Admin');
             }
-
+            
             $kehadiranTotalUmum1 = $this->m_kehadiran->totalKehadiran("Umum 1");
             $totalUmum1 = 0;
             $data['kehadiranUmum1'] = "";
