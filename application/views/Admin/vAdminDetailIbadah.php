@@ -19,7 +19,13 @@
                   <h5><?= tgl_indo($ibadah['tanggal'], true) ?></h5>
               </div>
             </div>
-            <a href="<?= base_url('Admin/exportExcel/' . $ibadah['kode']) ?>" class="btn btn-success shadow-sm"><i class="fas fa-file-excel fa-sm text-white mr-1"></i> Export Excel</a>
+            <?php if ($ibadah['jenis'] === "Umum 1") { ?>
+              <a href="<?= base_url('Admin/exportExcel/' . $ibadah['kode'] . '/UM2-' . substr($ibadah['kode'], -8)) ?>" class="btn btn-success shadow-sm"><i class="fas fa-file-excel fa-sm text-white mr-1"></i> Export Excel</a>
+            <?php } else if ($ibadah['jenis'] === "Umum 2") { ?>
+              <a href="<?= base_url('Admin/exportExcel/' . 'UM1-' . substr($ibadah['kode'], -8) ."/". $ibadah['kode']) ?>" class="btn btn-success shadow-sm"><i class="fas fa-file-excel fa-sm text-white mr-1"></i> Export Excel</a>
+            <?php } else { ?>
+              <a href="<?= base_url('Admin/exportExcel/' . $ibadah['kode']."/none") ?>" class="btn btn-success shadow-sm"><i class="fas fa-file-excel fa-sm text-white mr-1"></i> Export Excel</a>
+            <?php } ?>
           </div>
 
           <?= $this->session->flashdata('message'); ?>
@@ -28,7 +34,7 @@
               <div class="row">
                 <div class="col-lg">
                   <?php $this->load->model('m_kehadiran');
-                  $hadir = count($this->m_kehadiran->jemaatHadir($ibadah['kode']));
+                  $hadir = count($this->m_kehadiran->jemaatHadir($ibadah['kode'], FALSE));
                   ?>
                   <h5 class="text-dark" style="line-height: 1.6"><?= $ibadah['nama'] ?><br>"<?= $ibadah['tema'] ?>"</h5>
                   <h6><?= tgl_indo($ibadah['tanggal'], true) . " - " . time_indo($ibadah['jam']) . " WIB" ?></h6>

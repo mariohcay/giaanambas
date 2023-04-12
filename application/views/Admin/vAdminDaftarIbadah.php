@@ -161,7 +161,7 @@
                   </thead>
                   <tbody>
                     <?php foreach ($ibadah as $data) :
-                      $hadir = count($this->m_kehadiran->jemaatHadir($data['kode']));
+                      $hadir = count($this->m_kehadiran->jemaatHadir($data['kode'], FALSE));
                     ?>
                       <tr>
                         <!-- <td><img class="img-responsive shadow" style="width: 10rem;" src="<?= base_url('assets/img/thumbnail/') . $data['image'] ?>" alt=""></td> -->

@@ -9,7 +9,7 @@ class M_kehadiran extends CI_Model
 
     public function totalKehadiran($jenisIbadah)
     {
-        $query = $this->db->query('SELECT COUNT(id) as jumlah, tb_ibadah.tanggal as tanggal FROM tb_kehadiran INNER JOIN tb_ibadah ON tb_kehadiran.kode = tb_ibadah.kode WHERE tb_ibadah.status = "SELESAI" AND tb_ibadah.jenis = "'.$jenisIbadah.'"GROUP BY tb_kehadiran.kode ORDER BY tb_ibadah.tanggal ASC');
+        $query = $this->db->query('SELECT COUNT(id) as jumlah, tb_ibadah.tanggal as tanggal FROM tb_kehadiran INNER JOIN tb_ibadah ON tb_kehadiran.kode = tb_ibadah.kode WHERE tb_ibadah.status = "SELESAI" AND tb_ibadah.jenis = "' . $jenisIbadah . '"GROUP BY tb_kehadiran.kode ORDER BY tb_ibadah.tanggal ASC');
         return $query->result();
     }
 
@@ -32,7 +32,22 @@ class M_kehadiran extends CI_Model
 
     public function jemaatHadir($kodeIbadah)
     {
-        return $this->db->get_where('tb_kehadiran', ['kode' => $kodeIbadah])->result_array();
+        // return $this->db->get_where('tb_kehadiran', ['kode' => $kodeIbadah])-
+        $this->db->select('*, tb_kehadiran.nama AS nama_jemaat');
+        $this->db->from('tb_kehadiran');
+        $this->db->join('tb_ibadah', 'tb_kehadiran.kode = tb_ibadah.kode');
+        $this->db->where('tb_kehadiran.kode', $kodeIbadah);
+        return $this->db->get()->result_array();
+    }
+
+    public function jemaatTidakHadir($kodeIbadah, $kodeIbadah2)
+    {
+        if ($kodeIbadah2){
+        $query = $this->db->query("SELECT * FROM tb_jemaat WHERE id not IN (SELECT tb_kehadiran.id FROM `tb_kehadiran` INNER JOIN tb_jemaat on tb_kehadiran.id = tb_jemaat.id WHERE tb_kehadiran.kode = '".$kodeIbadah."' OR tb_kehadiran.kode = '".$kodeIbadah2."')");
+        } else {
+            $query = $this->db->query("SELECT * FROM tb_jemaat WHERE id not IN (SELECT tb_kehadiran.id FROM `tb_kehadiran` INNER JOIN tb_jemaat on tb_kehadiran.id = tb_jemaat.id WHERE tb_kehadiran.kode = '".$kodeIbadah . "')");
+        }
+        return $query->result_array();
     }
 
     public function cekStatusKehadiran($id, $kodeIbadah)

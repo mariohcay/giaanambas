@@ -34,13 +34,13 @@ class Admin extends CI_Controller
             // }
             // die;
             $ibadahBuka = $this->m_ibadah->ibadahBuka();
-            if(!empty($ibadahBuka)){
-                foreach($ibadahBuka as $data){
+            if (!empty($ibadahBuka)) {
+                foreach ($ibadahBuka as $data) {
                     $this->m_ibadah->tutupDaftarOnsite($data['kode']);
                 }
                 redirect('Admin');
             }
-            
+
             $kehadiranTotalUmum1 = $this->m_kehadiran->totalKehadiran("Umum 1");
             $totalUmum1 = 0;
             $data['kehadiranUmum1'] = "";
@@ -992,16 +992,28 @@ class Admin extends CI_Controller
         $this->tambahKehadiran($kodeIbadah);
     }
 
-    public function exportExcel($kodeIbadah)
+    public function exportExcel($kodeIbadah, $kodeIbadah2)
     {
         if (_checkUser()) {
+
             $kehadiran = $this->m_kehadiran->jemaatHadir($kodeIbadah);
+            $kehadiran2 = $this->m_kehadiran->jemaatHadir($kodeIbadah2);
+            $ketidakhadiran = $this->m_kehadiran->jemaatTidakHadir($kodeIbadah, $kodeIbadah2);
             $ibadah = $this->m_ibadah->ambilIbadah($kodeIbadah);
+            // var_dump($kehadiran); die;
 
             require('./vendor/autoload.php');
 
             $reader = IOFactory::createReader('Xlsx');
-            $spreadsheet = $reader->load('template.xlsx');
+
+            if ($kodeIbadah2 === "none") {
+                $filename = "Daftar Kehadiran Jemaat di " . $ibadah['jenis'] . " - " . tgl_indo($ibadah['tanggal']);
+                $spreadsheet = $reader->load('template.xlsx');
+            } else {
+                $filename = "Daftar Kehadiran Jemaat di Ibadah Umum " . tgl_indo($ibadah['tanggal']);
+                $spreadsheet = $reader->load('templateUmum.xlsx');
+            }
+
 
             $spreadsheet->getProperties()->setCreator('mariohcay')
                 ->setTitle('Daftar Kehadiran Jemaat' . tgl_indo($ibadah['tanggal']));
@@ -1015,23 +1027,77 @@ class Admin extends CI_Controller
                 ],
             ];
 
-            $filename = "Daftar Kehadiran Jemaat di " . $ibadah['nama'] . " - " . tgl_indo($ibadah['tanggal']);
             $spreadsheet->getActiveSheet()->getPageSetup()
                 ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
             $spreadsheet->setActiveSheetIndex(0)->getHeaderFooter()->setOddHeader('&C&B' . $filename);
             $spreadsheet->setActiveSheetIndex(0)->getHeaderFooter()->setOddFooter('&LGIA Anambas &RHalaman &P dari &N');
 
-            $row = 2;
-            foreach ($kehadiran as $data) {
-                $spreadsheet->setActiveSheetIndex(0);
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($row + 1, 1);
-                $spreadsheet->setActiveSheetIndex(0)
-                    ->setCellValue('A' . $row, ($row - 1))
-                    ->setCellValue('B' . $row, $data['id'])
-                    ->setCellValue('C' . $row, $data['nama'])
-                    ->setCellValue('D' . $row, $data['alamat']);
-                $spreadsheet->setActiveSheetIndex(0)->getStyle('A' . $row . ':D' . $row)->applyFromArray($styleArray);
-                ++$row;
+            if ($kodeIbadah2 === "none") {
+                $row = 3;
+                foreach ($kehadiran as $data) {
+                    $spreadsheet->setActiveSheetIndex(0);
+                    $spreadsheet->getActiveSheet()->insertNewRowBefore($row + 1, 1);
+                    $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . $row, ($row - 2))
+                        ->setCellValue('B' . $row, $data['id'])
+                        ->setCellValue('C' . $row, $data['nama_jemaat'])
+                        ->setCellValue('D' . $row, $data['alamat']);
+                    $spreadsheet->setActiveSheetIndex(0)->getStyle('A' . $row . ':D' . $row)->applyFromArray($styleArray);
+                    ++$row;
+                }
+
+                $hadir = $row - 2;
+                foreach ($ketidakhadiran as $data) {
+                    $spreadsheet->setActiveSheetIndex(0);
+                    $spreadsheet->getActiveSheet()->insertNewRowBefore($row + 5, 1);
+                    $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . ($row + 4), ($row - $hadir - 1))
+                        ->setCellValue('B' . ($row + 4), $data['id'])
+                        ->setCellValue('C' . ($row + 4), $data['nama'])
+                        ->setCellValue('D' . ($row + 4), $data['alamat']);
+                    $spreadsheet->setActiveSheetIndex(0)->getStyle('A' . ($row + 4) . ':D' . ($row + 4))->applyFromArray($styleArray);
+                    ++$row;
+                }
+
+            } else {
+                $row = 3;
+                foreach ($kehadiran as $data) {
+                    $spreadsheet->setActiveSheetIndex(0);
+                    $spreadsheet->getActiveSheet()->insertNewRowBefore($row + 1, 1);
+                    $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . $row, ($row - 2))
+                        ->setCellValue('B' . $row, $data['id'])
+                        ->setCellValue('C' . $row, $data['nama_jemaat'])
+                        ->setCellValue('D' . $row, $data['alamat']);
+                    $spreadsheet->setActiveSheetIndex(0)->getStyle('A' . $row . ':D' . $row)->applyFromArray($styleArray);
+                    ++$row;
+                }
+
+                $hadir = $row - 2;
+                foreach ($kehadiran2 as $data) {
+                    $spreadsheet->setActiveSheetIndex(0);
+                    $spreadsheet->getActiveSheet()->insertNewRowBefore($row + 5, 1);
+                    $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . ($row + 4), ($row - $hadir - 1))
+                        ->setCellValue('B' . ($row + 4), $data['id'])
+                        ->setCellValue('C' . ($row + 4), $data['nama_jemaat'])
+                        ->setCellValue('D' . ($row + 4), $data['alamat']);
+                    $spreadsheet->setActiveSheetIndex(0)->getStyle('A' . ($row + 4) . ':D' . ($row + 4))->applyFromArray($styleArray);
+                    ++$row;
+                }
+
+                $hadir2 = $row - 2;
+                foreach ($ketidakhadiran as $data) {
+                    $spreadsheet->setActiveSheetIndex(0);
+                    $spreadsheet->getActiveSheet()->insertNewRowBefore($row + 9, 1);
+                    $spreadsheet->setActiveSheetIndex(0)
+                        ->setCellValue('A' . ($row + 8), ($row - $hadir2 - 1))
+                        ->setCellValue('B' . ($row + 8), $data['id'])
+                        ->setCellValue('C' . ($row + 8), $data['nama'])
+                        ->setCellValue('D' . ($row + 8), $data['alamat']);
+                    $spreadsheet->setActiveSheetIndex(0)->getStyle('A' . ($row + 8) . ':D' . ($row + 8))->applyFromArray($styleArray);
+                    ++$row;
+                }
             }
 
             header('Content-Type: application/vnd.ms-excel');
