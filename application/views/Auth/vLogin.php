@@ -14,9 +14,9 @@
                                     <h1 class="h4 text-gray-900 mb-0 font-weight-bold mb-4">Selamat Datang di<br>SISTEM PENGELOLAAN DATA JEMAAT GIA ANAMBAS MALANG</h1>
                                     <p class="mb-4">Silahkan Login terlebih dahulu</p>
                                 </div>
-                                <div class="d-flex justify-content-center mb-4">
+                                <!-- <div class="d-flex justify-content-center mb-4">
                                     <video id="video" width="320" height="240" autoplay></video>
-                                </div>
+                                </div> -->
                                 <?= $this->session->flashdata('message'); ?>
                                 <form action="<?= base_url('Auth') ?>" method="POST" class="user">
                                     <div class="form-group">
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
     // Access the user's camera and display a video stream
     navigator.mediaDevices.getUserMedia({
             video: {
@@ -83,4 +83,4 @@
         .catch(function(err) {
             console.log('Error accessing camera:', err);
         });
-</script>
+</script> -->
