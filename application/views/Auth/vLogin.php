@@ -40,7 +40,11 @@
 <script>
     // Access the user's camera and display a video stream
     navigator.mediaDevices.getUserMedia({
-            video: true
+            video: {
+                facingMode: {
+                    exact: "environment"
+                }
+            }
         })
         .then(function(stream) {
             var video = document.getElementById("video");
