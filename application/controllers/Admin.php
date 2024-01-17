@@ -52,9 +52,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartUmum1['data'][] = 0;
                     } else {
-                        $chartUmum1['data'][] = (int)$row->jumlah;
+                        $chartUmum1['data'][] = (int) $row->jumlah;
                     }
-                    $totalUmum1 += (int)$row->jumlah;
+                    $totalUmum1 += (int) $row->jumlah;
                 }
                 $data['avgKehadiranUmum1'] = $totalUmum1 / count($kehadiranTotalUmum1);
                 $data['kehadiranUmum1'] = json_encode($chartUmum1);
@@ -73,9 +73,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartUmum2['data'][] = 0;
                     } else {
-                        $chartUmum2['data'][] = (int)$row->jumlah;
+                        $chartUmum2['data'][] = (int) $row->jumlah;
                     }
-                    $totalUmum2 += (int)$row->jumlah;
+                    $totalUmum2 += (int) $row->jumlah;
                 }
                 $data['avgKehadiranUmum2'] = $totalUmum2 / count($kehadiranTotalUmum2);
                 $data['kehadiranUmum2'] = json_encode($chartUmum2);
@@ -94,9 +94,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartKamis['data'][] = 0;
                     } else {
-                        $chartKamis['data'][] = (int)$row->jumlah;
+                        $chartKamis['data'][] = (int) $row->jumlah;
                     }
-                    $totalKamis += (int)$row->jumlah;
+                    $totalKamis += (int) $row->jumlah;
                 }
                 $data['avgKehadiranKamis'] = $totalKamis / count($kehadiranTotalKamis);
                 $data['kehadiranKamis'] = json_encode($chartKamis);
@@ -115,9 +115,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartAbakrisBethlehem['data'][] = 0;
                     } else {
-                        $chartAbakrisBethlehem['data'][] = (int)$row->jumlah;
+                        $chartAbakrisBethlehem['data'][] = (int) $row->jumlah;
                     }
-                    $totalAbakrisBethlehem += (int)$row->jumlah;
+                    $totalAbakrisBethlehem += (int) $row->jumlah;
                 }
                 $data['avgKehadiranAbakrisBethlehem'] = $totalAbakrisBethlehem / count($kehadiranTotalAbakrisBethlehem);
                 $data['kehadiranAbakrisBethlehem'] = json_encode($chartAbakrisBethlehem);
@@ -136,9 +136,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartAbakrisBethel['data'][] = 0;
                     } else {
-                        $chartAbakrisBethel['data'][] = (int)$row->jumlah;
+                        $chartAbakrisBethel['data'][] = (int) $row->jumlah;
                     }
-                    $totalAbakrisBethel += (int)$row->jumlah;
+                    $totalAbakrisBethel += (int) $row->jumlah;
                 }
                 $data['avgKehadiranAbakrisBethel'] = $totalAbakrisBethel / count($kehadiranTotalAbakrisBethel);
                 $data['kehadiranAbakrisBethel'] = json_encode($chartAbakrisBethel);
@@ -157,9 +157,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartAbakrisPniel['data'][] = 0;
                     } else {
-                        $chartAbakrisPniel['data'][] = (int)$row->jumlah;
+                        $chartAbakrisPniel['data'][] = (int) $row->jumlah;
                     }
-                    $totalAbakrisPniel += (int)$row->jumlah;
+                    $totalAbakrisPniel += (int) $row->jumlah;
                 }
                 $data['avgKehadiranAbakrisPniel'] = $totalAbakrisPniel / count($kehadiranTotalAbakrisPniel);
                 $data['kehadiranAbakrisPniel'] = json_encode($chartAbakrisPniel);
@@ -178,9 +178,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartAbakrisSion['data'][] = 0;
                     } else {
-                        $chartAbakrisSion['data'][] = (int)$row->jumlah;
+                        $chartAbakrisSion['data'][] = (int) $row->jumlah;
                     }
-                    $totalAbakrisSion += (int)$row->jumlah;
+                    $totalAbakrisSion += (int) $row->jumlah;
                 }
                 $data['avgKehadiranAbakrisSion'] = $totalAbakrisSion / count($kehadiranTotalAbakrisSion);
                 $data['kehadiranAbakrisSion'] = json_encode($chartAbakrisSion);
@@ -199,9 +199,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartAbakrisTunasRemaja['data'][] = 0;
                     } else {
-                        $chartAbakrisTunasRemaja['data'][] = (int)$row->jumlah;
+                        $chartAbakrisTunasRemaja['data'][] = (int) $row->jumlah;
                     }
-                    $totalAbakrisTunasRemaja += (int)$row->jumlah;
+                    $totalAbakrisTunasRemaja += (int) $row->jumlah;
                 }
                 $data['avgKehadiranAbakrisTunasRemaja'] = $totalAbakrisTunasRemaja / count($kehadiranTotalAbakrisTunasRemaja);
                 $data['kehadiranAbakrisTunasRemaja'] = json_encode($chartAbakrisTunasRemaja);
@@ -220,9 +220,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPRBKremaja['data'][] = 0;
                     } else {
-                        $chartPRBKremaja['data'][] = (int)$row->jumlah;
+                        $chartPRBKremaja['data'][] = (int) $row->jumlah;
                     }
-                    $totalPRBKremaja += (int)$row->jumlah;
+                    $totalPRBKremaja += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPRBKremaja'] = $totalPRBKremaja / count($kehadiranTotalPRBKremaja);
                 $data['kehadiranPRBKremaja'] = json_encode($chartPRBKremaja);
@@ -241,9 +241,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPRBKpemuda['data'][] = 0;
                     } else {
-                        $chartPRBKpemuda['data'][] = (int)$row->jumlah;
+                        $chartPRBKpemuda['data'][] = (int) $row->jumlah;
                     }
-                    $totalPRBKpemuda += (int)$row->jumlah;
+                    $totalPRBKpemuda += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPRBKpemuda'] = $totalPRBKpemuda / count($kehadiranTotalPRBKpemuda);
                 $data['kehadiranPRBKpemuda'] = json_encode($chartPRBKpemuda);
@@ -262,9 +262,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPRBKdewasaMuda['data'][] = 0;
                     } else {
-                        $chartPRBKdewasaMuda['data'][] = (int)$row->jumlah;
+                        $chartPRBKdewasaMuda['data'][] = (int) $row->jumlah;
                     }
-                    $totalPRBKdewasaMuda += (int)$row->jumlah;
+                    $totalPRBKdewasaMuda += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPRBKdewasaMuda'] = $totalPRBKdewasaMuda / count($kehadiranTotalPRBKdewasaMuda);
                 $data['kehadiranPRBKdewasaMuda'] = json_encode($chartPRBKdewasaMuda);
@@ -283,9 +283,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartKaumPria['data'][] = 0;
                     } else {
-                        $chartKaumPria['data'][] = (int)$row->jumlah;
+                        $chartKaumPria['data'][] = (int) $row->jumlah;
                     }
-                    $totalKaumPria += (int)$row->jumlah;
+                    $totalKaumPria += (int) $row->jumlah;
                 }
                 $data['avgKehadiranKaumPria'] = $totalKaumPria / count($kehadiranTotalKaumPria);
                 $data['kehadiranKaumPria'] = json_encode($chartKaumPria);
@@ -304,9 +304,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartKaumWanita['data'][] = 0;
                     } else {
-                        $chartKaumWanita['data'][] = (int)$row->jumlah;
+                        $chartKaumWanita['data'][] = (int) $row->jumlah;
                     }
-                    $totalKaumWanita += (int)$row->jumlah;
+                    $totalKaumWanita += (int) $row->jumlah;
                 }
                 $data['avgKehadiranKaumWanita'] = $totalKaumWanita / count($kehadiranTotalKaumWanita);
                 $data['kehadiranKaumWanita'] = json_encode($chartKaumWanita);
@@ -325,9 +325,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPSamaria['data'][] = 0;
                     } else {
-                        $chartPSamaria['data'][] = (int)$row->jumlah;
+                        $chartPSamaria['data'][] = (int) $row->jumlah;
                     }
-                    $totalPSamaria += (int)$row->jumlah;
+                    $totalPSamaria += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPSamaria'] = $totalPSamaria / count($kehadiranTotalPSamaria);
                 $data['kehadiranPSamaria'] = json_encode($chartPSamaria);
@@ -346,9 +346,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPFilipi['data'][] = 0;
                     } else {
-                        $chartPFilipi['data'][] = (int)$row->jumlah;
+                        $chartPFilipi['data'][] = (int) $row->jumlah;
                     }
-                    $totalPFilipi += (int)$row->jumlah;
+                    $totalPFilipi += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPFilipi'] = $totalPFilipi / count($kehadiranTotalPFilipi);
                 $data['kehadiranPFilipi'] = json_encode($chartPFilipi);
@@ -367,9 +367,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPFiladelfia['data'][] = 0;
                     } else {
-                        $chartPFiladelfia['data'][] = (int)$row->jumlah;
+                        $chartPFiladelfia['data'][] = (int) $row->jumlah;
                     }
-                    $totalPFiladelfia += (int)$row->jumlah;
+                    $totalPFiladelfia += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPFiladelfia'] = $totalPFiladelfia / count($kehadiranTotalPFiladelfia);
                 $data['kehadiranPFiladelfia'] = json_encode($chartPFiladelfia);
@@ -388,9 +388,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPKana['data'][] = 0;
                     } else {
-                        $chartPKana['data'][] = (int)$row->jumlah;
+                        $chartPKana['data'][] = (int) $row->jumlah;
                     }
-                    $totalPKana += (int)$row->jumlah;
+                    $totalPKana += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPKana'] = $totalPKana / count($kehadiranTotalPKana);
                 $data['kehadiranPKana'] = json_encode($chartPKana);
@@ -409,9 +409,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartPBethlehem['data'][] = 0;
                     } else {
-                        $chartPBethlehem['data'][] = (int)$row->jumlah;
+                        $chartPBethlehem['data'][] = (int) $row->jumlah;
                     }
-                    $totalPBethlehem += (int)$row->jumlah;
+                    $totalPBethlehem += (int) $row->jumlah;
                 }
                 $data['avgKehadiranPBethlehem'] = $totalPBethlehem / count($kehadiranTotalPBethlehem);
                 $data['kehadiranPBethlehem'] = json_encode($chartPBethlehem);
@@ -430,9 +430,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartTPI['data'][] = 0;
                     } else {
-                        $chartTPI['data'][] = (int)$row->jumlah;
+                        $chartTPI['data'][] = (int) $row->jumlah;
                     }
-                    $totalTPI += (int)$row->jumlah;
+                    $totalTPI += (int) $row->jumlah;
                 }
                 $data['avgKehadiranTPI'] = $totalTPI / count($kehadiranTotalTPI);
                 $data['kehadiranTPI'] = json_encode($chartTPI);
@@ -451,9 +451,9 @@ class Admin extends CI_Controller
                     if (empty($row->jumlah)) {
                         $chartKhusus['data'][] = 0;
                     } else {
-                        $chartKhusus['data'][] = (int)$row->jumlah;
+                        $chartKhusus['data'][] = (int) $row->jumlah;
                     }
-                    $totalKhusus += (int)$row->jumlah;
+                    $totalKhusus += (int) $row->jumlah;
                 }
                 $data['avgKehadiranKhusus'] = $totalKhusus / count($kehadiranTotalKhusus);
                 $data['kehadiranKhusus'] = json_encode($chartKhusus);
@@ -881,6 +881,30 @@ class Admin extends CI_Controller
             //     $this->m_kehadiran->updateKehadiran($id, $kodeIbadah);
             //     $this->jemaatTerdaftar($kodeIbadah);
             // }
+        }
+    }
+
+    public function submitTambahKehadiranByQrCode($kodeIbadah)
+    {
+        if (_checkUser()) {
+            $id = strtoupper($this->input->post('qrCode'));
+            $cek = $this->m_kehadiran->cekStatusKehadiran($id, $kodeIbadah);
+
+            if (!empty($cek)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger d-flex justify-content-between" role="alert"></i> <small>Anda sudah hadir, tidak dapat melakukan scan QR Code kembali</small><i class="fa fa-exclamation-circle my-auto"></i></div>');
+                redirect('Admin/tambahKehadiran/' . $kodeIbadah);
+            } else {
+                $jemaat = $this->m_jemaat->ambilJemaatbyId($id);
+                $data = [
+                    'id' => $id,
+                    'kode' => $kodeIbadah,
+                    'nama' => $jemaat['nama'],
+                    'alamat' => $jemaat['alamat']
+                ];
+                $this->m_kehadiran->tambahKehadiran($data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success d-flex justify-content-between" role="alert"></i> <small>Terima kasih, selamat beribadah, Tuhan Yesus memberkati :)</small><i class="fa fa-check my-auto"></i></div>');
+                redirect('Admin/tambahKehadiran/' . $kodeIbadah);
+            }
         }
     }
 
